@@ -1,10 +1,8 @@
-FROM debian:buster-slim
+FROM quay.io/ibmz/debian:buster-slim
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-RUN groupadd --system --gid 11211 memcache && useradd --system --gid memcache --uid 11211 memcache
-
-# ensure SASL's "libplain.so" is installed as per https://github.com/memcached/memcached/wiki/SASLHowto
-RUN set -eux; \
+RUN groupadd --system --gid 11211 memcache && useradd --system --gid memcache --uid 11211 memcache; \
+	set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		libsasl2-modules \
