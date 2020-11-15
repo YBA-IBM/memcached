@@ -1,26 +1,37 @@
-# https://github.com/docker-library/memcached
+# Tags
 
-## Maintained by: [the Docker Community](https://github.com/docker-library/memcached)
+-	[`1.6.8`](https://github.com/YBA-IBM/memcached/blob/master/debian/Dockerfile)
 
-This is the Git repo of the [Docker "Official Image"](https://github.com/docker-library/official-images#what-are-official-images) for [`memcached`](https://hub.docker.com/_/memcached/) (not to be confused with any official `memcached` image provided by `memcached` upstream). See [the Docker Hub page](https://hub.docker.com/_/memcached/) for the full readme on how to use this Docker image and for information regarding contributing and issues.
+# What is Memcached?
 
-The [full image description on Docker Hub](https://hub.docker.com/_/memcached/) is generated/maintained over in [the docker-library/docs repository](https://github.com/docker-library/docs), specifically in [the `memcached` directory](https://github.com/docker-library/docs/tree/master/memcached).
+Memcached is a general-purpose distributed memory caching system. It is often used to speed up dynamic database-driven websites by caching data and objects in RAM to reduce the number of times an external data source (such as a database or API) must be read.
 
-## See a change merged here that doesn't show up on Docker Hub yet?
+Memcached's APIs provide a very large hash table distributed across multiple machines. When the table is full, subsequent inserts cause older data to be purged in least recently used order. Applications using Memcached typically layer requests and additions into RAM before falling back on a slower backing store, such as a database.
 
-For more information about the full official images change lifecycle, see [the "An image's source changed in Git, now what?" FAQ entry](https://github.com/docker-library/faq#an-images-source-changed-in-git-now-what).
+> [wikipedia.org/wiki/Memcached](https://en.wikipedia.org/wiki/Memcached)
 
-For outstanding `memcached` image PRs, check [PRs with the "library/memcached" label on the official-images repository](https://github.com/docker-library/official-images/labels/library%2Fmemcached). For the current "source of truth" for [`memcached`](https://hub.docker.com/_/memcached/), see [the `library/memcached` file in the official-images repository](https://github.com/docker-library/official-images/blob/master/library/memcached).
+# How to use this image
 
----
+```console
+$ docker run --name my-memcache -d memcached
+```
 
--	[![build status badge](https://img.shields.io/github/workflow/status/docker-library/memcached/GitHub%20CI/master?label=GitHub%20CI)](https://github.com/docker-library/memcached/actions?query=workflow%3A%22GitHub+CI%22+branch%3Amaster)
--	[![build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/update.sh/job/memcached.svg?label=Automated%20update.sh)](https://doi-janky.infosiftr.net/job/update.sh/job/memcached/)
+## Setting Memory Usage
 
-| Build | Status | Badges | (per-arch) |
-|:-:|:-:|:-:|:-:|
-| [![amd64 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/memcached.svg?label=amd64)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/memcached/) | [![arm32v5 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/memcached.svg?label=arm32v5)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/memcached/) | [![arm32v6 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/memcached.svg?label=arm32v6)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/memcached/) | [![arm32v7 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/memcached.svg?label=arm32v7)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/memcached/) |
-| [![arm64v8 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/memcached.svg?label=arm64v8)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/memcached/) | [![i386 build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/memcached.svg?label=i386)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/memcached/) | [![mips64le build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/memcached.svg?label=mips64le)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/memcached/) | [![ppc64le build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/memcached.svg?label=ppc64le)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/memcached/) |
-| [![s390x build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/memcached.svg?label=s390x)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/memcached/) | [![put-shared build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/put-shared/job/light/job/memcached.svg?label=put-shared)](https://doi-janky.infosiftr.net/job/put-shared/job/light/job/memcached/) |
+```console
+$ docker run --name my-memcache -d memcached memcached -m 64
+```
 
-<!-- THIS FILE IS GENERATED BY https://github.com/docker-library/docs/blob/master/generate-repo-stub-readme.sh -->
+This would set the Memcached server to use 64 megabytes for storage.
+
+For infomation on configuring your memcached server, see the extensive [wiki](https://github.com/memcached/memcached/wiki).
+
+# License
+
+View [license information](https://github.com/memcached/memcached/blob/master/LICENSE) for the software contained in this image.
+
+As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
+
+Some additional license information which was able to be auto-detected might be found in [the `repo-info` repository's `memcached/` directory](https://github.com/docker-library/repo-info/tree/master/repos/memcached).
+
+As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
