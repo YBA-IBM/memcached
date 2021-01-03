@@ -1,8 +1,12 @@
+### This image is built to run on s390x architecture.
+-    [build source](https://github.com/YBA-IBM/memcached)
+-    [original source code](https://github.com/docker-library/memcached)
+
 # Tags
 
--	[`1.6.8`](https://github.com/YBA-IBM/memcached/blob/master/debian/Dockerfile)
+-	[`1.6.8`]
 
-# What is Memcached?
+# Memcached
 
 Memcached is a general-purpose distributed memory caching system. It is often used to speed up dynamic database-driven websites by caching data and objects in RAM to reduce the number of times an external data source (such as a database or API) must be read.
 
